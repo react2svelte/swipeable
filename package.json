@@ -1,5 +1,5 @@
 {
-  "name": "svelte-swipable",
+  "name": "@react2svelte/swipable",
   "version": "0.0.1-alpha.0",
   "license": "MIT",
   "description": "Svete swipe event handler ported from react-swipable",
