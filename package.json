@@ -1,6 +1,13 @@
 {
-  "name": "svelte-swipeable",
-  "version": "0.0.1",
+  "name": "svelte-swipable",
+  "version": "0.0.1-alpha.0",
+  "license": "MIT",
+  "description": "Svete swipe event handler ported from react-swipable",
+  "homepage": "https://github.com/react2svelte/swipable",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/react2svelte/swipable"
+  },
   "scripts": {
     "dev": "vite dev",
     "build": "svelte-kit sync && svelte-package",
