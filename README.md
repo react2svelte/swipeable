@@ -1,38 +1,84 @@
-# create-svelte
+# @react2svelte/swipable
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+An action to emit swipe and tap events on an element, based on [react-swipable](https://www.npmjs.com/package/react-swipeable) v7.0.0.
 
-## Creating a project
+## Quickstart
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Install the library
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+npm i react-swipeable
 ```
 
-## Building
+And add it to your component
 
-To create a production version of your app:
+```
+<script lang="ts">
+  import { swipable } from '@react2svelte/swipable';
+  import type { SwipeEventData } from '@react2svelte/swipable';
+  // ...
 
-```bash
-npm run build
+  function handler(e: CustomEvent<SwipeEventData>) {
+    console.log('User swiped!', e.detail);
+  }
+
+</script>
+
+<div
+  use:swipable  <!-- use the action -->
+  on:swiped={handler} <!-- set a handler for the swiped event -->
+/>
 ```
 
-You can preview the production build with `npm run preview`.
+## Type hints on the events
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Add the following line to your `app.d.ts` file
+
+```
+/// <reference types="@react2svelte/swipable" />
+```
+
+(There should already be a line with `/// <reference types="@sveltejs/kit" />`)
+
+## Emitted Events
+
+The `swipable` action emits 10 new events:
+
+General swipe events
+
+- swipedstart
+- swiping
+- swiped
+
+Directional swipe events
+
+- swipedup
+- swipeddown
+- swipedleft
+- swipedright
+
+Tap events
+
+- tap
+- touchstartormousedown
+- touchendormouseup
+
+## Configuration
+
+This library is based on `react-swipable`, and all the same configuration options and default values apply. Configration can be set by passing an object to `use` declation:
+
+```
+<div
+  use:swipable={{
+    delta: 10,                             // min distance(px) before a swipe starts. *See Notes*
+    preventScrollOnSwipe: false,           // prevents scroll during swipe (*See Details*)
+    trackTouch: true,                      // track touch input
+    trackMouse: false,                     // track mouse input
+    rotationAngle: 0,                      // set a rotation angle
+    swipeDuration: Infinity,               // allowable duration of a swipe (ms). *See Notes*
+    touchEventOptions: { passive: true },  // options for touch listeners (*See Details*)
+    }}
+/>
+```
+
+Please have a look at the [react-swipable documentation](https://www.npmjs.com/package/react-swipeable) for additional information.
