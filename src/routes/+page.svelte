@@ -1,23 +1,30 @@
 <script lang="ts">
-  import { swiping } from '$lib';
+  import { swipable } from '$lib';
+  import type { SwipeEventData } from '$lib/types';
+
+  let message = '';
+
+  function handler(event: CustomEvent<SwipeEventData>) {
+    console.log('swiped', event.detail);
+  }
 </script>
 
 <h1>Welcome to your library project</h1>
 <p>Create your package using @sveltejs/package and preview/showcase your work with SvelteKit</p>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-
 <div
   id="testbox"
-  use:swiping={{
-    onSwiped: (eventData) => console.log('User Swiped!', eventData)
-  }}
+  use:swipable
+  on:swiped={handler}
 />
+
+{message}
 
 <style>
   #testbox {
+    margin: auto;
     width: 500px;
     height: 500px;
-    border: 5px;
-    border-color: red;
+    border: 5px red solid;
   }
 </style>

@@ -10,6 +10,7 @@ import type {
   SwipeableProps,
   SwipeablePropsWithDefaultOptions,
   SwipeableState,
+  SwipeableCallbacks,
   SwipeCallback,
   TapCallback,
   Vector2
@@ -334,16 +335,50 @@ function updateTransientState(
   return state;
 }
 
-export function swiping(node: HTMLElement, options: SwipeableProps) {
-  const { trackMouse } = options;
+function defaultCallbacks(node: HTMLElement): SwipeableCallbacks {
+  let defaultCallbacks = {
+    onSwipedUp: (eventData: SwipeEventData) =>
+    node.dispatchEvent(new CustomEvent('swipedup', { detail: eventData })),
+    onSwipedDown: (eventData: SwipeEventData) =>
+    node.dispatchEvent(new CustomEvent('swipeddown', { detail: eventData })),
+    onSwipedLeft: (eventData: SwipeEventData) =>
+    node.dispatchEvent(new CustomEvent('swipedleft', { detail: eventData })),
+    onSwipedRight: (eventData: SwipeEventData) =>
+    node.dispatchEvent(new CustomEvent('swipedright', { detail: eventData })),
+    onSwipeStart: (eventData: SwipeEventData) =>
+    node.dispatchEvent(new CustomEvent('swipedstart', { detail: eventData })),
+    onSwiped: (eventData: SwipeEventData) =>
+      node.dispatchEvent(new CustomEvent('swiped', { detail: eventData })),
+    onSwiping: (eventData: SwipeEventData) =>
+    node.dispatchEvent(new CustomEvent('swiping', { detail: eventData })),
+    onTap: ({ event }: { event: HandledEvents }) =>
+    node.dispatchEvent(new CustomEvent('tap', { detail: event })),
+    onTouchStartOrOnMouseDown: ({ event }: { event: HandledEvents }) =>
+    node.dispatchEvent(new CustomEvent('touchstartormousedown', { detail: event })),
+    onTouchEndOrOnMouseUp: ({ event }: { event: HandledEvents }) =>
+    node.dispatchEvent(new CustomEvent('touchendormouseup', { detail: event }))
+  };
+
+  return defaultCallbacks;
+}
+
+export function swipable(node: HTMLElement, options?: SwipeableProps) {
+  let trackMouse = false;
+  if (options) {
+    if (options.trackMouse) trackMouse = options.trackMouse;
+  }
   let transientState = { ...initialState };
   let transientProps = { ...defaultProps };
 
   let previousProps = { ...transientProps };
 
+  // default handlers that emit new events
+  let defaultHandlers = defaultCallbacks(node);
+
   transientProps = {
     ...defaultProps,
-    ...options
+    ...options,
+    ...defaultHandlers
   };
 
   // Force defaults for config properties
@@ -366,6 +401,9 @@ export function swiping(node: HTMLElement, options: SwipeableProps) {
   handlers.ref(node);
 
   return {
+    update(newOptions: SwipeableProps) {
+      // TODO
+    },
     destroy() {
       cleanupTouch();
     }

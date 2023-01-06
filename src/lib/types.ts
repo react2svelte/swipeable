@@ -5,47 +5,49 @@ export const DOWN = 'Down';
 export type HandledEvents = TouchEvent | MouseEvent;
 export type Vector2 = [number, number];
 export type SwipeDirections = typeof LEFT | typeof RIGHT | typeof UP | typeof DOWN;
-export interface SwipeEventData {
-  /**
-   * Absolute displacement of swipe in x. Math.abs(deltaX);
-   */
-  absX: number;
-  /**
-   * Absolute displacement of swipe in y. Math.abs(deltaY);
-   */
-  absY: number;
-  /**
-   * Displacement of swipe in x. (current.x - initial.x)
-   */
-  deltaX: number;
-  /**
-   * Displacement of swipe in y. (current.y - initial.y)
-   */
-  deltaY: number;
-  /**
-   * Direction of swipe - Left | Right | Up | Down
-   */
-  dir: SwipeDirections;
-  /**
-   * Source event.
-   */
-  event: HandledEvents;
-  /**
-   * True for the first event of a tracked swipe.
-   */
-  first: boolean;
-  /**
-   * Location where swipe started - [x, y].
-   */
-  initial: Vector2;
-  /**
-   * "Absolute velocity" (speed) - √(absX^2 + absY^2) / time
-   */
-  velocity: number;
-  /**
-   * Velocity per axis - [ deltaX/time, deltaY/time ]
-   */
-  vxvy: Vector2;
+
+  export interface SwipeEventData {
+    /**
+     * Absolute displacement of swipe in x. Math.abs(deltaX);
+     */
+    absX: number;
+    /**
+     * Absolute displacement of swipe in y. Math.abs(deltaY);
+     */
+    absY: number;
+    /**
+     * Displacement of swipe in x. (current.x - initial.x)
+     */
+    deltaX: number;
+    /**
+     * Displacement of swipe in y. (current.y - initial.y)
+     */
+    deltaY: number;
+    /**
+     * Direction of swipe - Left | Right | Up | Down
+     */
+    dir: SwipeDirections;
+    /**
+     * Source event.
+     */
+    event: HandledEvents;
+    /**
+     * True for the first event of a tracked swipe.
+     */
+    first: boolean;
+    /**
+     * Location where swipe started - [x, y].
+     */
+    initial: Vector2;
+    /**
+     * "Absolute velocity" (speed) - √(absX^2 + absY^2) / time
+     */
+    velocity: number;
+    /**
+     * Velocity per axis - [ deltaX/time, deltaY/time ]
+     */
+    vxvy: Vector2;
+  
 }
 
 export type SwipeCallback = (eventData: SwipeEventData) => void;
