@@ -14,8 +14,8 @@ import type {
   SwipeCallback,
   TapCallback,
   Vector2
-} from './types';
-import { LEFT, RIGHT, UP, DOWN } from './types';
+} from './types.js';
+import { LEFT, RIGHT, UP, DOWN } from './types.js';
 
 const defaultProps: ConfigurationOptions = {
   delta: 10,
