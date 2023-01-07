@@ -1,6 +1,6 @@
 # @react2svelte/swipable
 
-[![npm version](https://img.shields.io/npm/v/@react2svelte/swipable.svg)](https://www.npmjs.com/package/@react2svelte/swipable).
+[![npm version](https://img.shields.io/npm/v/@react2svelte/swipable.svg)](https://www.npmjs.com/package/@react2svelte/swipable)
 
 An action to emit swipe and tap events on an element, based on [react-swipable](https://www.npmjs.com/package/react-swipeable) v7.0.0. Many thanks to all the contributors of that package for their hard work!
 
