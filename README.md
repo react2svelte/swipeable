@@ -7,12 +7,12 @@ An action to emit swipe and tap events on an element, based on [react-swipable](
 Install the library
 
 ```bash
-npm i react-swipeable
+npm i @react2svelte/swipable
 ```
 
 And add it to your component
 
-```
+```js
 <script lang="ts">
   import { swipable } from '@react2svelte/swipable';
   import type { SwipeEventData } from '@react2svelte/swipable';
@@ -34,7 +34,7 @@ And add it to your component
 
 Add the following line to your `app.d.ts` file
 
-```
+```js
 /// <reference types="@react2svelte/swipable" />
 ```
 
@@ -67,7 +67,7 @@ Tap events
 
 This library is based on `react-swipable`, and all the same configuration options and default values apply. Configration can be set by passing an object to `use` declation:
 
-```
+```js
 <div
   use:swipable={{
     delta: 10,                             // min distance(px) before a swipe starts. *See Notes*
