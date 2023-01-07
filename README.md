@@ -1,8 +1,10 @@
 # @react2svelte/swipable
 
-[![npm version](https://img.shields.io/npm/v/@react2svelte/swipable.svg)](https://www.npmjs.com/package/@react2svelte/swipable)
+[![npm version](https://img.shields.io/npm/v/@react2svelte/swipable.svg)](https://www.npmjs.com/package/@react2svelte/swipable).
 
-An action to emit swipe and tap events on an element, based on [react-swipable](https://www.npmjs.com/package/react-swipeable) v7.0.0.
+An action to emit swipe and tap events on an element, based on [react-swipable](https://www.npmjs.com/package/react-swipeable) v7.0.0. Many thanks to all the contributors of that package for their hard work!
+
+This package provides a [Svelte Action](https://svelte.dev/tutorial/actions) called `swipable` to attach to any DOM element to react to swipe events.
 
 ## Quickstart
 
@@ -48,22 +50,25 @@ The `swipable` action emits 10 new events:
 
 General swipe events
 
-- swipedstart
-- swiping
-- swiped
+- `swipedstart` - emitted once, at the beginning of a swipe
+- `swiping` - emitted continuously as the user is swiping
+- `swiped` - emitted once the swipe is complete
 
-Directional swipe events
+Directional swipe events. These are like `swiped` but for specific directions only
 
-- swipedup
-- swipeddown
-- swipedleft
-- swipedright
+- `swipedup` - User swiped up.
+- `swipeddown` - User swiped down.
+- `swipedleft` - User swiped left.
+- `swipedright` - User swiped right.
 
 Tap events
 
-- tap
-- touchstartormousedown
-- touchendormouseup
+- `tap`
+
+Passthrough events
+
+- `touchstartormousedown`
+- `touchendormouseup`
 
 ## Configuration
 
@@ -84,3 +89,30 @@ This library is based on `react-swipable`, and all the same configuration option
 ```
 
 Please have a look at the [react-swipable documentation](https://www.npmjs.com/package/react-swipeable) for additional information.
+
+## Swipe event data
+
+All Event Handlers are called with the below event data, `SwipeEventData`.
+
+```js
+{
+  event,          // source event
+  initial,        // initial swipe [x,y]
+  first,          // true for the first event of a tracked swipe
+  deltaX,         // x offset (current.x - initial.x)
+  deltaY,         // y offset (current.y - initial.y)
+  absX,           // absolute deltaX
+  absY,           // absolute deltaY
+  velocity,       // √(absX^2 + absY^2) / time - "absolute velocity" (speed)
+  vxvy,           // [ deltaX/time, deltaY/time] - velocity per axis
+  dir,            // direction of swipe (Left|Right|Up|Down)
+}
+```
+
+## Alternatives
+
+### [`svelte-gestures`](https://github.com/Rezi/svelte-gestures)
+
+Most notably there is `svelte-gestures`. Besides swiping and tapping, `svelte-gestures` provides `pinch`, `pan` and `rotate` gestures. However, there is no support for  the `swiping` functionality of `swipable`, which provides continuous updates as the user is swiping, rather than just a final event ones the swipe is complete.
+
+For the user it can be helpful to get visual feedback as they are swiping - for example and image in a gallery - and see the image move as they are swiping, not just once at the end of their swipe.
