@@ -1,25 +1,26 @@
-# @react2svelte/swipable
+# @react2svelte/swipeable
 
-[![npm version](https://img.shields.io/npm/v/@react2svelte/swipable.svg)](https://www.npmjs.com/package/@react2svelte/swipable)
+[![npm version](https://img.shields.io/npm/v/@react2svelte/swipeable.svg)](https://www.npmjs.com/package/@react2svelte/swipeable)
 
-**An action to emit swipe and tap events on an element, based on [react-swipable](https://www.npmjs.com/package/react-swipeable) v7.0.0. Many thanks to all the contributors of that package for their hard work!**
+**An action to emit swipe and tap events on an element, based on [react-swipeable](https://www.npmjs.com/package/react-swipeable) v7.0.0. Many thanks to all the contributors of that package for their hard work!**
 
-This package provides a [Svelte Action](https://svelte.dev/tutorial/actions) called `swipable` to attach to any DOM element to react to swipe events.
+
+This package provides a [Svelte Action](https://svelte.dev/tutorial/actions) called `swipeable` to attach to any DOM element to react to swipe events.
 
 ## Quickstart
 
 Install the library
 
 ```bash
-npm i @react2svelte/swipable
+npm i @react2svelte/swipeable
 ```
 
 And add it to your component
 
 ```js
 <script lang="ts">
-  import { swipable } from '@react2svelte/swipable';
-  import type { SwipeEventData } from '@react2svelte/swipable';
+  import { swipeable } from '@react2svelte/swipeable';
+  import type { SwipeEventData } from '@react2svelte/swipeable';
   // ...
 
   function handler(e: CustomEvent<SwipeEventData>) {
@@ -29,7 +30,7 @@ And add it to your component
 </script>
 
 <div
-  use:swipable  <!-- use the action -->
+  use:swipeable  <!-- use the action -->
   on:swiped={handler} <!-- set a handler for the swiped event -->
 />
 ```
@@ -39,14 +40,14 @@ And add it to your component
 Add the following line to your `app.d.ts` file
 
 ```js
-/// <reference types="@react2svelte/swipable" />
+/// <reference types="@react2svelte/swipeable" />
 ```
 
 (There should already be a line with `/// <reference types="@sveltejs/kit" />`)
 
 ## Emitted events
 
-The `swipable` action emits 10 new events:
+The `swipeable` action emits 10 new events:
 
 General swipe events
 
@@ -72,11 +73,11 @@ Passthrough events
 
 ## Configuration
 
-This library is based on `react-swipable`, and all the same configuration options and default values apply. Configration can be set by passing an object to `use` declation:
+This library is based on `react-swipeable`, and all the same configuration options and default values apply. Configration can be set by passing an object to `use` declation:
 
 ```js
 <div
-  use:swipable={{
+  use:swipeable={{
     delta: 10,                             // min distance(px) before a swipe starts. *See Notes*
     preventScrollOnSwipe: false,           // prevents scroll during swipe (*See Details*)
     trackTouch: true,                      // track touch input
@@ -88,7 +89,7 @@ This library is based on `react-swipable`, and all the same configuration option
 />
 ```
 
-Please have a look at the [react-swipable documentation](https://www.npmjs.com/package/react-swipeable) for additional information.
+Please have a look at the [react-swipeable documentation](https://www.npmjs.com/package/react-swipeable) for additional information.
 
 ## Swipe event data
 
@@ -111,7 +112,7 @@ All Event Handlers are called with the below event data, `SwipeEventData`.
 
 ## Alternative: [`svelte-gestures`](https://github.com/Rezi/svelte-gestures)
 
-`svelte-gestures` provides `pinch`, `pan` and `rotate` gestures besides swiping and tapping. However, there is no support for  the `swiping` functionality of `swipable`, which provides continuous updates as the user is swiping, rather than just a final event ones the swipe is complete.
+`svelte-gestures` provides `pinch`, `pan` and `rotate` gestures besides swiping and tapping. However, there is no support for  the `swiping` functionality of `swipeable`, which provides continuous updates as the user is swiping, rather than just a final event ones the swipe is complete.
 
 For the user it can be helpful to get visual feedback as they are swiping - for example and image in a gallery - and see the image move as they are swiping, not just once at the end of their swipe.
 

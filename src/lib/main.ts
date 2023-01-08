@@ -362,7 +362,7 @@ function defaultCallbacks(node: HTMLElement): SwipeableCallbacks {
   return defaultCallbacks;
 }
 
-export function swipable(node: HTMLElement, options?: SwipeableProps) {
+export function swipeable(node: HTMLElement, options?: SwipeableProps) {
   let trackMouse = false;
   if (options) {
     if (options.trackMouse) trackMouse = options.trackMouse;
