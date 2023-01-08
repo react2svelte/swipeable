@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { swipeable } from '$lib';
-  import type { SwipeEventData } from '$lib/types';
+  import { swipeable, type SwipeEventData } from '$lib';
 
   let message = '';
 
