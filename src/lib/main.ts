@@ -338,25 +338,25 @@ function updateTransientState(
 function defaultCallbacks(node: HTMLElement): SwipeableCallbacks {
   let defaultCallbacks = {
     onSwipedUp: (eventData: SwipeEventData) =>
-    node.dispatchEvent(new CustomEvent('swipedup', { detail: eventData })),
+      node.dispatchEvent(new CustomEvent('swipedup', { detail: eventData })),
     onSwipedDown: (eventData: SwipeEventData) =>
-    node.dispatchEvent(new CustomEvent('swipeddown', { detail: eventData })),
+      node.dispatchEvent(new CustomEvent('swipeddown', { detail: eventData })),
     onSwipedLeft: (eventData: SwipeEventData) =>
-    node.dispatchEvent(new CustomEvent('swipedleft', { detail: eventData })),
+      node.dispatchEvent(new CustomEvent('swipedleft', { detail: eventData })),
     onSwipedRight: (eventData: SwipeEventData) =>
-    node.dispatchEvent(new CustomEvent('swipedright', { detail: eventData })),
+      node.dispatchEvent(new CustomEvent('swipedright', { detail: eventData })),
     onSwipeStart: (eventData: SwipeEventData) =>
-    node.dispatchEvent(new CustomEvent('swipedstart', { detail: eventData })),
+      node.dispatchEvent(new CustomEvent('swipedstart', { detail: eventData })),
     onSwiped: (eventData: SwipeEventData) =>
       node.dispatchEvent(new CustomEvent('swiped', { detail: eventData })),
     onSwiping: (eventData: SwipeEventData) =>
-    node.dispatchEvent(new CustomEvent('swiping', { detail: eventData })),
+      node.dispatchEvent(new CustomEvent('swiping', { detail: eventData })),
     onTap: ({ event }: { event: HandledEvents }) =>
-    node.dispatchEvent(new CustomEvent('tap', { detail: event })),
+      node.dispatchEvent(new CustomEvent('tap', { detail: event })),
     onTouchStartOrOnMouseDown: ({ event }: { event: HandledEvents }) =>
-    node.dispatchEvent(new CustomEvent('touchstartormousedown', { detail: event })),
+      node.dispatchEvent(new CustomEvent('touchstartormousedown', { detail: event })),
     onTouchEndOrOnMouseUp: ({ event }: { event: HandledEvents }) =>
-    node.dispatchEvent(new CustomEvent('touchendormouseup', { detail: event }))
+      node.dispatchEvent(new CustomEvent('touchendormouseup', { detail: event }))
   };
 
   return defaultCallbacks;

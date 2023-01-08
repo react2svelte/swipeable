@@ -4,7 +4,6 @@
 
 **An action to emit swipe and tap events on an element, based on [react-swipeable](https://www.npmjs.com/package/react-swipeable) v7.0.0. Many thanks to all the contributors of that package for their hard work!**
 
-
 This package provides a [Svelte Action](https://svelte.dev/tutorial/actions) called `swipeable` to attach to any DOM element to react to swipe events.
 
 ## Quickstart
@@ -78,14 +77,14 @@ This library is based on `react-swipeable`, and all the same configuration optio
 ```js
 <div
   use:swipeable={{
-    delta: 10,                             // min distance(px) before a swipe starts. *See Notes*
-    preventScrollOnSwipe: false,           // prevents scroll during swipe (*See Details*)
-    trackTouch: true,                      // track touch input
-    trackMouse: false,                     // track mouse input
-    rotationAngle: 0,                      // set a rotation angle
-    swipeDuration: Infinity,               // allowable duration of a swipe (ms). *See Notes*
-    touchEventOptions: { passive: true },  // options for touch listeners (*See Details*)
-    }}
+    delta: 10, // min distance(px) before a swipe starts. *See Notes*
+    preventScrollOnSwipe: false, // prevents scroll during swipe (*See Details*)
+    trackTouch: true, // track touch input
+    trackMouse: false, // track mouse input
+    rotationAngle: 0, // set a rotation angle
+    swipeDuration: Infinity, // allowable duration of a swipe (ms). *See Notes*
+    touchEventOptions: { passive: true } // options for touch listeners (*See Details*)
+  }}
 />
 ```
 
@@ -112,7 +111,7 @@ All Event Handlers are called with the below event data, `SwipeEventData`.
 
 ## Alternative: [`svelte-gestures`](https://github.com/Rezi/svelte-gestures)
 
-`svelte-gestures` provides `pinch`, `pan` and `rotate` gestures besides swiping and tapping. However, there is no support for  the `swiping` functionality of `swipeable`, which provides continuous updates as the user is swiping, rather than just a final event ones the swipe is complete.
+`svelte-gestures` provides `pinch`, `pan` and `rotate` gestures besides swiping and tapping. However, there is no support for the `swiping` functionality of `swipeable`, which provides continuous updates as the user is swiping, rather than just a final event ones the swipe is complete.
 
 For the user it can be helpful to get visual feedback as they are swiping - for example and image in a gallery - and see the image move as they are swiping, not just once at the end of their swipe.
 
