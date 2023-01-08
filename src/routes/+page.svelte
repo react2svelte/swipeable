@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { swipable } from '$lib';
+  import { swipeable } from '$lib';
   import type { SwipeEventData } from '$lib/types';
 
   let message = '';
@@ -14,7 +14,7 @@
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 <div
   id="testbox"
-  use:swipable
+  use:swipeable
   on:swiped={handler}
 />
 
