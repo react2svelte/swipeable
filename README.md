@@ -111,7 +111,7 @@ All Event Handlers are called with the below event data, `SwipeEventData`.
 
 ## Alternative: [`svelte-gestures`](https://github.com/Rezi/svelte-gestures)
 
-`svelte-gestures` provides `pinch`, `pan` and `rotate` gestures besides swiping and tapping. However, there is no support for the `swiping` functionality of `swipeable`, which provides continuous updates as the user is swiping, rather than just a final event ones the swipe is complete.
+`svelte-gestures` provides `pinch`, `pan` and `rotate` gestures besides swiping and tapping. However, there is no support for the `swiping` functionality of `swipeable`, which provides continuous updates as the user is swiping, rather than just a final event once the swipe is complete.
 
 For the user it can be helpful to get visual feedback as they are swiping - for example and image in a gallery - and see the image move as they are swiping, not just once at the end of their swipe.
 
